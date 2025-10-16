@@ -18,10 +18,24 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 overflow-x-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="absolute w-full h-full opacity-[0.03]" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg
+          className="absolute w-full h-full opacity-[0.03]"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
           <defs>
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            <pattern
+              id="grid"
+              width="10"
+              height="10"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 10 0 L 0 0 0 10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+              />
             </pattern>
           </defs>
           <rect width="100" height="100" fill="url(#grid)" />
@@ -32,11 +46,17 @@ export default function Dashboard() {
         <header className="border-b border-slate-800 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
             <div>
-              <h1 className="text-2xl font-light tracking-tight opacity-90">ClauseClarity</h1>
-              <p className="text-xs text-slate-400 mt-1">Welcome, {user?.name || user?.email}</p>
+              <h1 className="text-2xl font-light tracking-tight opacity-90">
+                ClauseClarity
+              </h1>
+              <p className="text-xs text-slate-400 mt-1">
+                Welcome, {user?.name || user?.email}
+              </p>
             </div>
             <button
-              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
               className="text-slate-400 text-sm hover:text-slate-100 transition-colors duration-300"
             >
               Sign out
@@ -76,8 +96,12 @@ export default function Dashboard() {
             </div>
 
             <div className="animate-fade-in-up">
-              {activeTab === "playbook" && <PlaybookSection userId={user?.sub} />}
-              {activeTab === "analyze" && <ContractAnalysisSection userId={user?.sub} />}
+              {activeTab === "playbook" && (
+                <PlaybookSection userId={user?.sub} />
+              )}
+              {activeTab === "analyze" && (
+                <ContractAnalysisSection userId={user?.sub} />
+              )}
             </div>
           </div>
         </main>
