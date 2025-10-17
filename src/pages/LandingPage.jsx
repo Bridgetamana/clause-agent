@@ -6,7 +6,7 @@ import Footer from "../components/landing/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg
           className="absolute w-full h-full opacity-[0.03]"

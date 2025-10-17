@@ -54,14 +54,14 @@ export default function ContractAnalysisSection() {
         <h2 className="text-3xl font-light tracking-tight">
           Analyze a Contract
         </h2>
-        <p className="text-slate-400 font-light leading-relaxed max-w-2xl">
+        <p className="text-grey font-light leading-relaxed max-w-2xl">
           Upload a PDF and our AI analyzes it against your playbook, flagging
           risky clauses and explaining them clearly.
         </p>
       </div>
 
-      <div className="pt-8 border-t border-slate-800 space-y-6">
-        <div className="border-2 border-dashed border-slate-700 rounded-lg p-12 text-center hover:border-slate-500 transition-colors duration-300">
+      <div className="pt-8 border-t border-border space-y-6">
+        <div className="border-2 border-dashed border-border rounded-lg p-12 text-center hover:border-grey transition-colors duration-300">
           <input
             type="file"
             accept=".pdf"
@@ -71,11 +71,11 @@ export default function ContractAnalysisSection() {
             disabled={isAnalyzing}
           />
           <label htmlFor="pdf-upload" className="cursor-pointer block">
-            <div className="text-4xl mb-3">📄</div>
+            <div className="text-4xl mb-3">���</div>
             <p className="text-slate-200 font-light">
               {file ? file.name : "Upload a PDF contract"}
             </p>
-            <p className="text-slate-500 text-xs mt-2 font-light">
+            <p className="text-grey text-xs mt-2 font-light">
               or drag and drop
             </p>
           </label>
@@ -84,39 +84,42 @@ export default function ContractAnalysisSection() {
         <button
           onClick={handleAnalyze}
           disabled={!file || isAnalyzing}
-          className="w-full px-6 py-3 border border-slate-400 text-slate-50 text-sm font-light hover:border-slate-200 hover:bg-slate-900 transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full px-6 py-3 border border-grey text-foreground text-sm font-light hover:border-slate-200 hover:bg-background-alt transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          {isAnalyzing ? "🔄 Analyzing..." : "Analyze Contract"}
+          {isAnalyzing ? "��� Analyzing..." : "Analyze Contract"}
         </button>
       </div>
 
       {analysisResult && (
-        <div className="space-y-4 mt-8 border-t pt-8">
-          <h3 className="text-2xl font-bold text-gray-800">Analysis Results</h3>
+        <div className="space-y-6 mt-8 border-t border-border pt-8 animate-fade-in-up">
+          <h3 className="text-3xl font-light tracking-tight">
+            Analysis Results
+          </h3>
 
           {analysisResult.greenFlags.length > 0 && (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h4 className="font-bold text-green-900 mb-3">
-                Green-Light Clauses
-              </h4>
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-widest text-success font-semibold">
+                ✓ Green-Light Clauses
+              </p>
               <ul className="space-y-2">
                 {analysisResult.greenFlags.map((flag, idx) => (
-                  <li key={idx} className="text-green-800">
-                    {flag}
+                  <li key={idx} className="text-slate-300 font-light text-sm">
+                    • {flag}
                   </li>
                 ))}
               </ul>
             </div>
           )}
+
           {analysisResult.yellowFlags.length > 0 && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <h4 className="font-bold text-yellow-900 mb-3">
-                Yellow-Flag Clauses
-              </h4>
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-widest text-warning font-semibold">
+                ⚠ Yellow-Flag Clauses
+              </p>
               <ul className="space-y-2">
                 {analysisResult.yellowFlags.map((flag, idx) => (
-                  <li key={idx} className="text-yellow-800">
-                    {flag}
+                  <li key={idx} className="text-slate-300 font-light text-sm">
+                    • {flag}
                   </li>
                 ))}
               </ul>
@@ -124,26 +127,28 @@ export default function ContractAnalysisSection() {
           )}
 
           {analysisResult.redFlags.length > 0 && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h4 className="font-bold text-red-900 mb-3">Red-Flag Clauses</h4>
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-widest text-danger font-semibold">
+                ✕ Red-Flag Clauses
+              </p>
               <ul className="space-y-2">
                 {analysisResult.redFlags.map((flag, idx) => (
-                  <li key={idx} className="text-red-800">
-                    {flag}
+                  <li key={idx} className="text-slate-300 font-light text-sm">
+                    • {flag}
                   </li>
                 ))}
               </ul>
             </div>
           )}
 
-          <div className="flex gap-4 mt-6 pt-4 border-t">
-            <button className="flex-1 bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+          <div className="flex gap-3 mt-8 pt-6 border-t border-border">
+            <button className="flex-1 px-4 py-2 border border-success text-success text-xs font-light hover:bg-success/90 transition-colors duration-300">
               Approve & Sign
             </button>
-            <button className="flex-1 bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            <button className="flex-1 px-4 py-2 border border-warning text-warning text-xs font-light hover:bg-warning/90 transition-colors duration-300">
               Request Changes
             </button>
-            <button className="flex-1 bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+            <button className="flex-1 px-4 py-2 border border-danger text-danger text-xs font-light hover:bg-danger/90 transition-colors duration-300">
               Reject
             </button>
           </div>

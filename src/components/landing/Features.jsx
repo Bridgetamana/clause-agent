@@ -19,7 +19,7 @@ export default function Features() {
 
   return (
     <section
-      className="pt-12 border-t border-slate-800 animate-fade-in-up"
+      className="pt-12 border-t border-border animate-fade-in-up"
       style={{ animationDelay: "0.4s" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
@@ -28,10 +28,8 @@ export default function Features() {
             key={feature.label}
             className="space-y-3 hover:translate-y-[-2px] transition-transform duration-300"
           >
-            <p className="text-xs uppercase tracking-widest text-slate-500">
-              {feature.label}
-            </p>
-            <p className="text-slate-300 leading-relaxed font-light">
+            <p className="text-xs uppercase tracking-widest">{feature.label}</p>
+            <p className="text-slate-400 leading-relaxed font-light">
               {feature.description}
             </p>
           </div>

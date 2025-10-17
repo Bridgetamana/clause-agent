@@ -13,7 +13,7 @@ export default function SignOutButton() {
         onClick={() =>
           logout({ logoutParams: { returnTo: window.location.origin } })
         }
-        className="text-slate-400 text-sm hover:text-slate-100 transition-colors duration-300"
+        className="text-grey text-sm hover:text-foreground transition-colors duration-300"
       >
         Sign out
       </button>

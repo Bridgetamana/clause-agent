@@ -9,14 +9,14 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-50 flex justify-center items-center">
-        <div className="text-sm font-light text-slate-400">Loading...</div>
+      <div className="min-h-screen bg-background text-foreground flex justify-center items-center">
+        <div className="text-sm font-light text-grey">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg
           className="absolute w-full h-full opacity-[0.03]"
@@ -43,13 +43,13 @@ export default function Dashboard() {
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        <header className="border-b border-slate-800 backdrop-blur-sm">
+        <header className="border-b border-border backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-light tracking-tight opacity-90">
                 ClauseClarity
               </h1>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-grey mt-1">
                 Welcome, {user?.name || user?.email}
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function Dashboard() {
               onClick={() =>
                 logout({ logoutParams: { returnTo: window.location.origin } })
               }
-              className="text-slate-400 text-sm hover:text-slate-100 transition-colors duration-300"
+              className="text-grey text-sm hover:text-slate-100 transition-colors duration-300"
             >
               Sign out
             </button>
@@ -66,31 +66,31 @@ export default function Dashboard() {
 
         <main className="flex-1 px-8 py-12">
           <div className="max-w-6xl mx-auto">
-            <div className="flex gap-2 mb-12 border-b border-slate-800 pb-8">
+            <div className="flex gap-2 mb-12 border-b border-border pb-8">
               <button
                 onClick={() => setActiveTab("playbook")}
                 className={`px-6 py-2 text-sm font-light transition-all duration-300 relative ${
                   activeTab === "playbook"
-                    ? "text-slate-50"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "text-foreground"
+                    : "text-grey hover:text-slate-200"
                 }`}
               >
                 Company Playbook
                 {activeTab === "playbook" && (
-                  <div className="absolute bottom-[-8px] left-0 right-0 h-px bg-slate-50"></div>
+                  <div className="absolute bottom-[-8px] left-0 right-0 h-px bg-foreground"></div>
                 )}
               </button>
               <button
                 onClick={() => setActiveTab("analyze")}
                 className={`px-6 py-2 text-sm font-light transition-all duration-300 relative ${
                   activeTab === "analyze"
-                    ? "text-slate-50"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "text-foreground"
+                    : "text-grey hover:text-slate-200"
                 }`}
               >
                 Analyze Contract
                 {activeTab === "analyze" && (
-                  <div className="absolute bottom-[-8px] left-0 right-0 h-px bg-slate-50"></div>
+                  <div className="absolute bottom-[-8px] left-0 right-0 h-px bg-foreground"></div>
                 )}
               </button>
             </div>

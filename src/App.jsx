@@ -17,8 +17,8 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-        <div className="text-lg font-semibold text-gray-700">Loading...</div>
+      <div className="min-h-screen bg-foreground flex justify-center items-center">
+        <div className="text-lg font-semibold text-grey">Loading...</div>
       </div>
     );
   }

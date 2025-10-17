@@ -20,10 +20,10 @@ export default function HowItWorks() {
 
   return (
     <section
-      className="pt-12 border-t border-slate-800 space-y-8 animate-fade-in-up"
+      className="pt-12 border-t border-border space-y-8 animate-fade-in-up"
       style={{ animationDelay: "0.5s" }}
     >
-      <p className="text-xs uppercase tracking-widest text-slate-500">
+      <p className="text-xs uppercase tracking-widest text-grey">
         How it works
       </p>
       <div className="space-y-12">
@@ -32,14 +32,12 @@ export default function HowItWorks() {
             key={step.number}
             className="flex gap-8 group hover:opacity-100 opacity-90 transition-opacity duration-300"
           >
-            <div className="flex-shrink-0 w-8 h-8 rounded-full border border-slate-700 flex items-center justify-center text-xs font-light text-slate-400 group-hover:border-slate-500 transition-colors duration-300">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full border border-border flex items-center justify-center text-xs font-light text-grey group-hover:border-grey transition-colors duration-300">
               {step.number}
             </div>
             <div>
-              <h3 className="text-lg font-light text-slate-50 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-slate-400 font-light">{step.description}</p>
+              <h3 className="text-lg font-light mb-2">{step.title}</h3>
+              <p className="text-grey font-light">{step.description}</p>
             </div>
           </div>
         ))}

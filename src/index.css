@@ -1,8 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
-* {
-  font-family: "Manrope", sans-serif;
+
+:root {
+  --background: #020617;
+  --background-alt: #0f172a;
+  --border: #334155;
+  --grey: #94a3b8;
+  --foreground: #fafafa;
+
+  --success: #22c55e;
+  --warning: #eab308;
+  --danger: #ef4444;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-grey: var(--grey);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger)
 }
 
 @keyframes fadeInUp {
@@ -33,4 +53,9 @@
 
 .animate-slide-down {
   animation: slideDown 0.5s ease-out forwards;
+}
+
+body {
+  color: var(--foreground);
+  font-family: "Manrope", sans-serif;
 }
