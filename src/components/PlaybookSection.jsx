@@ -1,22 +1,41 @@
 import { useState, useEffect } from "react";
+import { useApiClient, playbookAPI } from "../api/client";
 
 export default function PlaybookSection({ userId }) {
   const [playbook, setPlaybook] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const [_isLoading, setIsLoading] = useState(true);
   const [savedMessage, setSavedMessage] = useState("");
+  const apiClient = useApiClient();
 
   useEffect(() => {
-    const savedPlaybook = localStorage.getItem(`playbook_${userId}`);
-    if (savedPlaybook) {
-      setPlaybook(savedPlaybook);
-    }
-  }, [userId]);
+    const loadPlaybook = async () => {
+      try {
+        setIsLoading(true);
+        const response = await playbookAPI.get(apiClient);
+        if (response.content) {
+          setPlaybook(response.content);
+        }
+      } catch (error) {
+        console.error("Failed to load playbook:", error);
+        const savedPlaybook = localStorage.getItem(`playbook_${userId}`);
+        if (savedPlaybook) {
+          setPlaybook(savedPlaybook);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPlaybook();
+  }, [userId, apiClient]);
 
   const handleSave = async () => {
     setIsSaving(true);
     setSavedMessage("");
 
     try {
+      await playbookAPI.save(apiClient, playbook);
       localStorage.setItem(`playbook_${userId}`, playbook);
       setSavedMessage("✓ Saved");
       setTimeout(() => setSavedMessage(""), 3000);
