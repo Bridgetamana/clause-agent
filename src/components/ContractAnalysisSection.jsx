@@ -23,29 +23,23 @@ export default function ContractAnalysisSection() {
     setIsAnalyzing(true);
     setAnalysisResult(null);
 
-    try {
-      setTimeout(() => {
-        setAnalysisResult({
-          greenFlags: [
-            "Confidentiality clause is standard and fair",
-            "Term length (1 year) is acceptable",
-          ],
-          yellowFlags: [
-            "Payment terms are Net 60, but your playbook prefers Net 30",
-            "Termination clause requires 60 days notice",
-          ],
-          redFlags: [
-            "No liability cap found - violates your playbook rule",
-            "Indemnification clause is too broad",
-          ],
-        });
-      }, 2000);
-    } catch (error) {
-      console.error("Analysis failed:", error);
-      alert("Failed to analyze contract");
-    } finally {
+    setTimeout(() => {
+      setAnalysisResult({
+        greenFlags: [
+          "Confidentiality clause is standard and fair",
+          "Term length (1 year) is acceptable",
+        ],
+        yellowFlags: [
+          "Payment terms are Net 60, but your playbook prefers Net 30",
+          "Termination clause requires 60 days notice",
+        ],
+        redFlags: [
+          "No liability cap found - violates your playbook rule",
+          "Indemnification clause is too broad",
+        ],
+      });
       setIsAnalyzing(false);
-    }
+    }, 2000);
   };
 
   return (

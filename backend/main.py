@@ -7,6 +7,7 @@ import uvicorn
 from routes import playbook, health
 
 load_dotenv()
+load_dotenv(".env.local")
 
 app = FastAPI(
     title="ClauseClarity API",

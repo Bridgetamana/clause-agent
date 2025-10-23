@@ -4,7 +4,7 @@ import { useApiClient, playbookAPI } from "../api/client";
 export default function PlaybookSection({ userId }) {
   const [playbook, setPlaybook] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [_isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
   const [savedMessage, setSavedMessage] = useState("");
   const apiClient = useApiClient();
 
@@ -16,8 +16,8 @@ export default function PlaybookSection({ userId }) {
         if (response.content) {
           setPlaybook(response.content);
         }
-      } catch (error) {
-        console.error("Failed to load playbook:", error);
+      } catch {
+        // Fall back to local storage if API call fails
         const savedPlaybook = localStorage.getItem(`playbook_${userId}`);
         if (savedPlaybook) {
           setPlaybook(savedPlaybook);
@@ -39,9 +39,10 @@ export default function PlaybookSection({ userId }) {
       localStorage.setItem(`playbook_${userId}`, playbook);
       setSavedMessage("✓ Saved");
       setTimeout(() => setSavedMessage(""), 3000);
-    } catch (error) {
+    } catch {
       setSavedMessage("✗ Failed");
-      console.error(error);
+      // Save to local storage as fallback
+      localStorage.setItem(`playbook_${userId}`, playbook);
     } finally {
       setIsSaving(false);
     }
